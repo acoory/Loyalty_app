@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import enterpriseService from "@/services/enterpriseService";
+import { router } from "expo-router";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,11 +29,11 @@ const Login = () => {
 
       <TextInput className="w-full p-3 mb-4 border border-gray-300 rounded-lg" placeholder="Password" secureTextEntry value={password} onChangeText={setPassword} />
 
-      <TouchableOpacity className="w-full bg-blue-500 p-3 rounded-lg" onPress={handleLogin}>
+      <TouchableOpacity className="w-full bg-blue-500 p-3 rounded-lg" onPress={() => handleLogin()}>
         <Text className="text-center text-white font-semibold">Login</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity className="mt-4" onPress={() => console.log("Go to Register Screen")}>
+      <TouchableOpacity className="mt-4" onPress={() => router.push("/(register)")}>
         <Text className="text-blue-500 text-center">Vous n'avez pas de compte ? Inscrivez-vous</Text>
       </TouchableOpacity>
     </View>
