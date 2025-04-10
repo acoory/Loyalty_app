@@ -1,13 +1,13 @@
 import axios from "axios";
+import Config from "react-native-config";
 
-class instance {
-  public axios = axios.create({
-    baseURL: "http://localhost:8080/",
-    timeout: 1000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export default class Api {
+  public instance: any;
+  constructor() {
+    const baseURL = `http://localhost:8080`;
+    this.instance = axios.create({
+      baseURL: `${baseURL}`,
+      withCredentials: true,
+    });
+  }
 }
-
-export default new instance().axios;

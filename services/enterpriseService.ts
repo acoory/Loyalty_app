@@ -1,18 +1,22 @@
-import Api from "./api";
+import Api from './api';
 
-class EnterpriseService {
-  private static base_path = "/enterprise";
+class EnterpriseService extends Api {
 
-  static async createEnterprise(data: any) {
+  async createEnterprise(data: any) {
     try {
-      const response = await Api.post(`${this.base_path}/create`, data);
-      console.log("response: ", response);
+      return this.instance.post(`/enterprise/create`, data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-      return response.data;
+  async login(data: any) {
+    try {
+      return this.instance.post(`/enterprise/login`, data);
     } catch (error) {
       console.log(error);
     }
   }
 }
 
-export default EnterpriseService;
+export default new EnterpriseService();
